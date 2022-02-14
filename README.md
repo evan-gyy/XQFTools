@@ -12,6 +12,9 @@ XQF办公自动化小工具,提供如下功能:
 - 批量删除Word文件中的图文框
 - 其他花里胡哨的功能
 
+## 目录
+
+`[TOC]`
 
 ## 使用准备
 
@@ -37,7 +40,7 @@ XQF办公自动化小工具,提供如下功能:
 pip install -r requriements.txt
 ```
 
-## 1、组卷文件修改
+## 组卷文件修改
 
 > PaperExport/
 
@@ -49,7 +52,7 @@ pip install -r requriements.txt
 - 若修改ppt,则需要同时存在word和ppt,程序会提取word中的内容写入ppt;若只修改word,则只需放入word文件
 - 请确保文件夹中存在background_image_xqf.png,丢失会导致ppt中出现空白页
 
-## 2、Word导入重命名
+## Word导入重命名
 
 > NumberRename/
 > SplitQuestion/
@@ -62,7 +65,7 @@ pip install -r requriements.txt
 - SplitQuestion:多文件模式,使用指定Excel和多个Word文件,批量生成Word文件对应的重命名编号文件
 - 多文件模式的具体说明见文件夹内的视频
 
-## 3、排课表格导入
+## 排课表格导入
 
 > Paike/
 
@@ -78,7 +81,7 @@ pip install -r requriements.txt
 	> Paike/导出(高一1v5)班级排课.xlsx
 
 
-## 4、Word批量删除图文框
+## Word批量删除图文框
 
 > DelFrame/
 
@@ -89,7 +92,7 @@ pip install -r requriements.txt
 - 支持单文件/多文件模式
 - 可以删除同一个目录下所有Word文件中的图文框
 
-## 5、Excel目录文件按区县排序
+## Excel目录文件按区县排序
 
 > SortCatalog/
 
