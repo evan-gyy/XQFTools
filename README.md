@@ -61,7 +61,9 @@ pip install -r requriements.txt
 
 ## 组卷文件修改
 
-> PaperExport/
+```
+PaperExport/
+```
 
 ### 功能
 修改Word样式,并基于Word将内容写入相应PPT
@@ -73,8 +75,10 @@ pip install -r requriements.txt
 
 ## Word导入重命名
 
-> NumberRename/
-> SplitQuestion/
+```
+NumberRename/
+SplitQuestion/
+```
 
 ### 功能
 根据目录文件,重命名题目编号,生成题目、答案、解析三种编号,并按指定模式排列
@@ -86,7 +90,9 @@ pip install -r requriements.txt
 
 ## 排课表格导入
 
-> Paike/
+```
+Paike/
+```
 
 ### 功能
 基于排课文件,生成对应的、支持导入系统的Excel文件
@@ -94,15 +100,20 @@ pip install -r requriements.txt
 ### 说明
 - 运行后,需要依次选择排课文件和系统导出文件
 - 排课文件示例:
-	> Paike/总表.xlsx
+	```
+	Paike/总表.xlsx
+	```
 
 - 系统导出文件示例:
-	> Paike/导出(高一1v5)班级排课.xlsx
+	```
+	Paike/导出(高一1v5)班级排课.xlsx
+	```
 
 
 ## Word批量删除图文框
-
-> DelFrame/
+```
+DelFrame/
+```
 
 ### 功能
 批量删除word文件中的图文框
@@ -112,9 +123,9 @@ pip install -r requriements.txt
 - 可以删除同一个目录下所有Word文件中的图文框
 
 ## Excel目录文件按区县排序
-
-> SortCatalog/
-
+```
+SortCatalog/
+```
 ### 功能
 将指定目录文件中的内容按区县排序
 
@@ -141,7 +152,9 @@ pip install -r requriements.txt
           ]
   ```
 - 输出文件样例:
-	> res-原文件名.xlsx
+	```
+	res-原文件名.xlsx
+	```
 - 支持多文件模式,可以批量修改当前目录下的文件
 
 
