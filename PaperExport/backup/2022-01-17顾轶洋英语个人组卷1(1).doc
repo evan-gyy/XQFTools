@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+    <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <xml><w:WordDocument><w:View>Print</w:View></xml>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="csrf-token" content="mrimzHGmYvRxpcAtDC0XjDAmmnDE43x1T0jDAbjs">
+    <title>下载组卷PDF-无漏AI</title>
+    <meta name="keywords" content="无漏课程,无漏错题">
+    <meta name="description" content="无漏课程,无漏错题">
+    <script type="text/javascript" src="https://www.wulouai.com/home/js/library/jquery-1.11.0.min.js"></script>
+    <style>
+        body,html{width:1000px !important;margin:0 auto;}
+        table{border-spacing:0;border-collapse: collapse;}
+        td,th{display: table-cell;padding: 0;}
+        p{margin-block-start: 0;margin-block-end: 10px;}
+        .page_not_break {page-break-after: avoid !important;}
+        .page_new_break {page-break-before: always !important;}
+        .wrapping-div {page-break-inside: avoid !important;}
+        .wrapping-div-only {page-break-inside: avoid !important;}
+        .wrapping-after-always-div{page-break-after:always !important;}
+
+        .comment-img-width{
+            /*max-width:850px !important;*/
+            max-width:900px !important;
+            /*max-height:1362px !important;*/
+            max-height:1100px !important;
+            width:auto !important;
+            height:auto !important;
+        }
+        .comment-qrcode-img-width{
+            /*max-width:800px !important;*/
+            max-height:1000px !important;
+            width:auto !important;
+            height:auto !important;
+        }
+        .comment-remark-img-width{
+            max-width:100% !important;
+            max-height:100% !important;
+            width:auto !important;
+            height:auto !important;
+        }
+        .comment-remark-width{
+            width:100%  !important;
+            max-width: 800px !important;
+        }
+        .admin-answer-div{color: red;}
+        .pdf-title-size{font-size:35px;}
+        .pdf-p-size{font-size:25px;}
+        .pdf-text-size {font-size:25px !important;}
+        .table_center{text-align:center;vertical-align:middle;}
+        .view-pdf-size-1{font-weight: normal;font-family: "XiQuezhaopaiti";color: red;font-size: 32px;}
+        .view-pdf-size-2{color: #428bca;font-family: "XiQuejuzhenti";font-size: 28px;}
+        .view-pdf-size-3{font-size: 26px;font-family:"KaiTi";background-color: black;color: white;padding-left: 10px;}
+        .view-pdf-size-4{font-size: 22px;font-family:"KaiTi";background-color: grey;color: white;font-style: italic;padding-left: 10px;}
+        /*.comment-space{padding-bottom: 20px;}*/
+        .comment-text-space{/*padding-bottom: 10px;*//*position: relative;*/}
+        .bottom-div-3{padding-bottom: 100px;}
+        .sourse_title_class{font-size: 23px;}
+        .editor_question_html *{/*font-family:"Times New Roman",'HYA6GJ' !important;*/font-family:"Times New Roman";}
+        .editor_answer_html *{/*font-family:"Times New Roman",'KaiTi' !important;*/font-family:"Times New Roman";}
+
+        /*html 默认*/
+        .editor_html_div *{word-wrap:break-word;max-width: 980px !important;text-align:justify;}
+        .editor_question_knowledge ,.editor_answer_knowledge{background-color: lightgray;font-family:"KaiTi" !important;width:900px; font-size:24px;}
+        .editor_html_div table{table-layout: fixed !important;}
+        /*1个td*/
+        .editor_html_div table:not(.default_table) tr td:nth-last-child(1):first-child{width: 850px !important; }
+        /*2个td*/
+        .editor_html_div table:not(.default_table) tr td:nth-last-child(2):first-child,.editor_html_div table:not(.default_table) tr td:nth-last-child(2):first-child ~ td{width: 425px !important;  }
+        /*3个td*/
+        .editor_html_div table:not(.default_table) tr td:nth-last-child(3):first-child,.editor_html_div table:not(.default_table) tr td:nth-last-child(3):first-child ~ td{width: 284px !important;}
+        /*4个td*/
+        .editor_html_div table:not(.default_table) tr td:nth-last-child(4):first-child,.editor_html_div table:not(.default_table) tr td:nth-last-child(4):first-child ~ td{width: 213px !important;  }
+        .editor_html_div table:not(.default_table) tr td:nth-last-child(5):first-child,.editor_html_div table:not(.default_table) tr td:nth-last-child(5):first-child ~ td{width: 170px !important;  }
+        /*5个td*/
+        /*.editor_html_div table:not(.default_table) tr td:nth-last-child(5):first-child{width: 80px !important;}*/
+        /*.editor_html_div table:not(.default_table) tr td:nth-last-child(5):first-child ~ td{width: 193px !important;}*/
+        /*6个td*/
+        .editor_html_div table:not(.default_table) tr td:nth-last-child(6):first-child,.editor_html_div table:not(.default_table) tr td:nth-last-child(6):first-child ~ td{width: 150px !important;}
+        .editor_html_div table:not(.default_table) td p {margin-top: 0;margin-bottom: 0;}
+        .editor_html_div td{ font-size:21px;}
+        .editor_html_div td,.panel-body td *{text-align:left !important;}
+        /* .editor_html_div table{ margin:8px 0 20px 0 !important; } */
+        /*.editor_html_div p{ padding:10px 0 0 0 !important; }*/
+        .editor_html_div p:nth-of-type(1){ padding:0 0 0 0 !important; }
+        /*.editor_html_div,.editor_html_div *{ font-family: Arial,Microsoft YaHei,'微软雅黑' !important;}*/
+        /*--处理页面表格问题 end--*/
+        .editor_html_div::after{ width: 1000px; display: block; content: ""; height: 1px;}
+        .editor_html_div ,.editor_html_div *{font-family: "Times New Roman","楷体" !important; font-size: 21px !important; line-height: 32px !important;}
+        .editor_html_div p{ padding-bottom: 6px ;}
+        .editor_html_div table table{ margin-bottom: 0 !important;}
+
+        /*html 备注版 复制一份*/
+        .editor_remark_html_div *{word-wrap:break-word;max-width: 800px !important;text-align:justify;}
+        .editor_remark_question_knowledge ,.editor_remark_answer_knowledge{background-color: lightgray;font-family:"KaiTi" !important;width:780px; font-size:24px;}
+        .editor_remark_html_div table{table-layout: fixed !important;}
+        /*1个td*/
+        .editor_remark_html_div table:not(.default_table) tr td:nth-last-child(1):first-child{width: 700px !important; }
+        /*2个td*/
+        .editor_remark_html_div table:not(.default_table) tr td:nth-last-child(2):first-child,.editor_remark_html_div table:not(.default_table) tr td:nth-last-child(2):first-child ~ td{width: 350px !important;  }
+        /*3个td*/
+        .editor_remark_html_div table:not(.default_table) tr td:nth-last-child(3):first-child,.editor_remark_html_div table:not(.default_table) tr td:nth-last-child(3):first-child ~ td{width: 233px !important;}
+        /*4个td*/
+        .editor_remark_html_div table:not(.default_table) tr td:nth-last-child(4):first-child,.editor_remark_html_div table:not(.default_table) tr td:nth-last-child(4):first-child ~ td{width: 175px !important;  }
+        .editor_remark_html_div table:not(.default_table) tr td:nth-last-child(5):first-child,.editor_remark_html_div table:not(.default_table) tr td:nth-last-child(5):first-child ~ td{width: 140px !important;  }
+        /*5个td*/
+        /*.editor_remark_html_div table:not(.default_table) tr td:nth-last-child(5):first-child{width: 80px !important;}*/
+        /*.editor_remark_html_div table:not(.default_table) tr td:nth-last-child(5):first-child ~ td{width: 193px !important;}*/
+        /*6个td*/
+        .editor_remark_html_div table:not(.default_table) tr td:nth-last-child(6):first-child,.editor_remark_html_div table:not(.default_table) tr td:nth-last-child(6):first-child ~ td{width: 116px !important;}
+        .editor_remark_html_div table:not(.default_table) td p {margin-top: 0;margin-bottom: 0;}
+        .editor_remark_html_div td{ font-size:21px;}
+        .editor_remark_html_div td,.panel-body td *{text-align:left !important;}
+        .editor_remark_html_div p:nth-of-type(1){ padding:0 0 0 0 !important; }
+        .editor_remark_html_div::after{ width: 700px; display: block; content: ""; height: 1px;}
+        .editor_remark_html_div ,.editor_remark_html_div *{font-family: "Times New Roman","楷体" !important; font-size: 21px !important; line-height: 32px !important;}
+        .editor_remark_html_div p{ padding-bottom: 6px ;}
+        .editor_remark_html_div table table{ margin-bottom: 0 !important;}
+
+        /*--处理页面表格问题--*/
+        .no_border td,.no_border th{border:none !important;}
+        .yes_border td,.yes_border th{border:1px solid !important;}
+        .no_margin *{  margin:0 !important; text-indent:0 !important}
+        .text-center {
+            text-align: center;
+        }
+
+        @font-face {
+            font-family: "hya4gjm";
+            src: url("https://assets.xqf.cn/style/img/pdf/hya4gjm.woff2") format("woff2"),
+            url("https://assets.xqf.cn/style/img/pdf/hya4gjm.woff") format("woff"),
+            url("https://assets.xqf.cn/style/img/pdf/hya4gjm.ttf") format("truetype"),
+            url("https://assets.xqf.cn/style/img/pdf/hya4gjm.eot") format("embedded-opentype"),
+            url("https://assets.xqf.cn/style/img/pdf/hya4gjm.svg") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body,.wrapping-div,.body{ text-align: center;  padding:0; margin:0; line-height: 1.42857143;font-family: "SimSun";font-size: 16px; color: #000;background-color: #fff;}
+        .wrapping-div>table,.body_div>table{width: 100%;vertical-align: bottom;margin: 3px auto 0 auto; border-collapse: separate; border-spacing: 2px;}
+        .body{ padding-top: 20px;padding-top: 20px;}
+        img{ max-width: 100%;}
+        td{ text-align: left; padding: 0;}
+        .title_1{ font-size: 28px; line-height: 30px; }
+        .title_2{ font-size: 38px;line-height: 38px;font-family: "hya4gjm"; color:#ff4800}
+        .title_3{ font-size: 28px; color:#08afa8; font-weight: bold; line-height: 28px;}
+        .title_1 td,.title_2 td,.title_3 td{text-align: center;}
+        .title_span{ font-size: 24px; color:#fff; background-color: #08afa8; font-weight: normal; border-radius: 20px 20px 20px 0; padding:3px 10px; vertical-align: top;}
+        .title_4_1{ line-height: 30px; border-radius: 12px 12px 12px 12px; border-bottom: 2px solid #08afa8;  background: #f2fbfb;}
+        .title_4 table{ border-collapse: separate; border-spacing: 2px; margin:0;padding: 0;width: auto; float: left;font-size: 26px;font-family: "hya4gjm"; background: #08afa8 url(https://assets.xqf.cn/style/img/pdf/z_16.png) no-repeat bottom right; background-size:30px 100% ; padding: 0 40px 0 10px; border-radius: 9px 0 0 9px;  color: #fff;}
+        .title_icon { width: 22px; height: 22px; vertical-align: top; margin: 4px 5px 0 0;}
+        .title_5_1{ line-height: 24px; border-radius: 12px 12px 0 12px; border-bottom: 1px solid #fca53f;  background: #fff;}
+        .title_5 table{border-collapse: separate; border-spacing: 2px;margin:0;padding: 0;width: auto;float: left;font-size: 24px; background: #fca53f url(https://assets.xqf.cn/style/img/pdf/z_20.png) no-repeat bottom right; background-size:30px 100% ; padding: 0 40px 0 10px; border-radius: 9px 0 0 9px;  color: #fff;}
+        .title_6_1,.title_6_2,.title_7_1,.title_7_2{ white-space:nowrap;font-size: 24px;font-family: "hya4gjm"; padding-bottom: 0;}
+        .title_right_size{font-size: 20px;}
+        .title_6_1,.title_6_2{color: #08afa8;}.title_7_1,.title_7_2{color: #fca53f;}
+        table p,table img{padding-top:0;margin-top:0;}
+        .title_6_span{ color: #757575;  font-size: 20px;font-family: "SimSun";}
+        .title_strat{ padding-right: 20px;}
+        .title_strat img{ width: 26px; height: 26px; vertical-align: middle; position: relative; top:-2px; display: inline-block; margin-right:-7px;  }
+        .title_strat svg{ width: 26px; height: 26px; vertical-align: middle; position: relative; top:-2px; display: inline-block; margin-right:-7px;  }
+        .body_div>table.title_6,.body_div>table.title_7{ margin-bottom: 30px; margin-top: 15px;}
+        .title_4_new{ line-height: 30px; font-size: 26px;font-family: "hya4gjm";background-color: #f2fbfb; width: calc(900px - 40px);  font-size: 24px; text-align: left; color:#fff; border-radius: 18px ;  vertical-align: bottom;margin: 14px auto 0 auto; padding-right: 40px;}
+        .title_4_new span{ padding: 2px 5px 2px 20px ; background-color: #08afa8; display: inline-block; border-radius: 18px  0 0 18px  ;   position: relative;}
+        .title_4_new span i{ position: absolute;   width: 40px;background-image: url(https://assets.xqf.cn/style/img/pdf/lan.svg); background-position: 0 bottom; background-repeat: no-repeat; background-size: 100% 100% ; display: block ; right: -39px; top:0;border: none; padding: 0; margin: 0;bottom: 0; }
+        .title_4_new svg,.title_4_new img{ position: relative; top: -2px; vertical-align: middle; display: inline-block}
+        .title_4_new{background-image: url(https://assets.xqf.cn/style/img/pdf/lanse.svg); background-position: 0 bottom; background-repeat: repeat-x;  }
+        .title_4_new span i{  bottom: 0;}
+        .title_4_new2{font-family: "SimSun";  font-size: 24px;line-height: 24px;background-color: #fff;background-image: url(https://assets.xqf.cn/style/img/pdf/huagnse.svg);   }
+        .title_4_new2 span{  background-color: #fca53f ; }
+        .title_4_new2 span i{  background-image: url(https://assets.xqf.cn/style/img/pdf/huang.svg);}
+        .erweima{
+            font-size: 14px;
+            background: #f5f5f5;
+            background-image: -webkit-linear-gradient(0deg, #f8fafa, #fff);
+            background-image: -webkit-linear-gradient(top, #f8fafa, #fff);
+            background-image: linear-gradient(0deg, #f8fafa 3%, #fff 100%);
+            position: relative;
+            border: 1px solid #e3e3e3;
+            border-radius: 8px;
+            margin: 10px;
+            border-top: 1px solid #f5f5f5;
+            border-left: 1px solid #f5f5f5;}
+        .erweima_left img{ vertical-align:bottom}
+        td.erweima_left {  padding: 5px 5px 5px 5px;}
+        .erweima_left{ text-align:right; width:39%;}
+        .erweima td{font-size: 21px;}
+
+        /*.re_html_div p:not(.default_p) span{*/
+        /*    padding-right: 10px;*/
+        /*    display: inline-block;*/
+        /*}*/
+        .erweima_r .erweima{margin-top:0;margin-right:0;width:110px;}
+        .editor_qrcode_div{width: 890px !important;}
+        .HackBox{border-top:1px solid !important;margin-top:-1px !important;border-top:0;margin-top:0;clear:both;visibility:hidden;}
+        /*.HackBox{width:100%;min-width:500px;clear:both;display:block;height:1px;}*/
+    </style>
+    <style>
+        .pdf_heibai { color:#000}
+        .pdf_heibai .title_4_new span,.pdf_heibai .title_span,.pdf_heibai .title_4 table,.pdf_heibai .title_5 table{background-color: #000;}
+        .pdf_heibai .title_2,.pdf_heibai .title_3,.pdf_heibai .title_7_1, .pdf_heibai .title_7_2 { color:#000}
+        .pdf_heibai .title_4_1,.pdf_heibai .title_4_new{ background-color:#d3d3d3}
+        .pdf_heibai .title_4_new2 span{ background-color:#4c4c4c}
+        .pdf_heibai [fill="rgb(252, 165, 63)"]{fill:rgb(109, 109, 109);}
+        .pdf_heibai [fill="rgb(231, 231, 231)"]{fill:rgb(209, 209, 209);}
+        .pdf_heibai .t_div>ul>li:nth-of-type(1) .pdf_title span{  color:#fff ;  background:#000; }
+        .pdf_heibai .pdf_jt{border-color: #000;border-color: #555555 ; }
+        .pdf_heibai .pdf_title>span{border-color: #555555 !important; color:#000 }
+        .pdf_heibai .title_6_span{ color:#848484}
+        .pdf_heibai .title_4_new{background-image: url(https://assets.xqf.cn/style/img/pdf/heibai/lanse.svg);}
+        .pdf_heibai .title_4_new span i { background-image: url(https://assets.xqf.cn/style/img/pdf/heibai/lan.svg); }
+        .pdf_heibai .title_4_new2 span i {background-image: url(https://assets.xqf.cn/style/img/pdf/heibai/huang.svg?1);}
+        .pdf_heibai .title_4_new2 {background-image: url(https://assets.xqf.cn/style/img/pdf/heibai/huagnse.svg?1);}
+        .pdf_heibai .title_6_1, .pdf_heibai .title_6_2{ color:#4c4c4c}
+
+        .body_div > .page_new_break{width: 100%; margin: 0 auto;}
+        /* .body_div > .page_new_break .wrapping-div td:nth-of-type(1){ width: 10px;  } */
+    </style>
+
+    <style>
+        .tag_daanw{ border-top: 1px solid #e7e7e7; padding-top: 15px;}
+        .tag_daanw td{ vertical-align: top; padding-bottom: 15px;font-size: 20px; }
+        .tag_daan1 { font-family: "hya4gjm";    color: #08afa8;font-size: 22px; width:80px; padding-right: 20px;}
+        .tag_daan2 td{   width: 100px; padding-right: 20px;}
+    </style>
+    <style>
+        .tag_daanw.tag_daanw_new td{ font-weight: bold; display:inline-block; word-wrap:break-word;
+            word-break:normal !important;    font-size: 24px !important; vertical-align: top;}
+        .tag_daanw_new .tag_daan2{padding-left:20px}
+        .tag_daanw.tag_daanw_new tr{ padding-bottom: 15px; width: 100%;}
+        .tag_daanw.tag_daanw_new tr,.tag_daanw.tag_daanw_new ,.tag_daanw.tag_daanw_new tbody,.tag_daanw.tag_daanw_new table{ display: block; text-align: left;line-height: normal !important;    font-size: 24px !important;width: 100%;}
+        .tag_daanw.tag_daanw_new td span{ display: block; float: left;line-height: normal !important;     font-size: 24px !important;}
+        .tag_daanw_new .tag_daan2 td p{color: #000; display: inline-block; line-height: normal !important;    font-size: 24px !important;font-weight: normal; }
+        .tag_daanw_new .tag_daan2 td{ width: auto; min-width: 100px; color: #39b6ad;}
+        .tag_daanw.tag_daanw_new td.tag_daan1{ width: auto; color: #ff4800;  }
+        .tag_daanw.tag_daanw_new td p{ padding: 0; margin: 0;}
+    </style>
+
+    <style>
+        .td_w_1 { width: 820px; }
+        .td_w_1 .title_4_new{ width: calc(810px - 40px);}
+        .td_w_1 > table{ width:810px ; margin-top: 14px;}
+        .td_w_1 .erweima{ margin-left: 0;margin-right: 0;}
+        td.td_w_2{  padding:4px 0 0 10px;border-left: 1px solid #000;}
+        .td_w_table{ border: 0; border-collapse: separate; vertical-align: bottom; margin-top: -4px !important ; border-spacing: 0 !important; }
+    </style>
+
+    
+    
+</head>
+
+<body class="">
+    <div class="body">
+            <!--水印文本-->
+    <input type="hidden" class="watermark" value="张勃">
+                                                    
+            <div class="top_div_one ">
+                                    <div class="body_div">
+                                                                                    <table class="title_1"><tr><td>2022-01-17顾轶洋英语个人组卷1</td></tr></table>
+                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                        
+                                                                                                                                                                <table class="title_1 page_new_break"><tr><td>未分类习题</td></tr></table>
+                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="wrapping-div">
+                                                                                                                                                <table class="title_3"><tr><td>阅读理解<span class="title_span">4小题</span></td></tr></table>
+                                                                                                                                                                                        <div class="wrapping-div " style="">
+                                    
+                        <table class="title_6">
+                            <tr>
+                    <td class="title_6_1">1.</td>
+                    <td  class="title_6_2">
+                                                <span class="title_strat">
+                                                            </span>
+                        <span class="title_6_span">GE2014NQGGKZT2J_1612_20210823_001</span>
+                    </td>
+                </tr>
+            
+            <tr>
+                <td class="title_6_1"></td>
+                <td class="title_6_wz">
+                    
+                                            <div class="comment-text-space editor_html_div editor_question_html pdf-text-size ">
+                            <div class="re_html_div no_border"><p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">Arriving
+in Sydney on his own from India, my husband, Rashid, stayed in a
+hotel for a short time while looking for a short time while looking
+for a house for me and our children.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">During
+the first week of his stay, he went out one day to do some shopping.
+He came back in the late afternoon to discover that his suitcase was
+gone. He was extremely worried as the suitcase had all his important
+papers, including his passport.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">He
+reported the case to the police and then sat there, lost and lonely
+in strange city, thinking of the terrible troubles of getting all the
+paperwork organized again from a distant country while trying to
+settle down in a new one.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">Late
+in the evening, the phone rang. It was a stranger. He was trying to
+pronounce my husband’s name and was asking him a lot of
+questions. Then he said they had found a pile of papers in their
+trash can (</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">垃圾桶</font></span></font></font><font size="2"><font face="Times New Roman, serif">)
+that had been left out on the footpath.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">My
+husband rushed to their home to find a kind family holding all his
+papers and documents. Their young daughter had gone to the trash can
+and found a pile of unfamiliar papers. Her parents had carefully
+sorted them out, although they had found mainly foreign addresses on
+most of the documents. At last they had seen a half</font><font face="Times New Roman, serif">-</font><font face="Times New Roman, serif">written
+letter in the pile in which my husband had given his new telephone
+number to a friend.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">That
+family not only restored the important documents to us that day but
+also restored our faith and trust in people. We still remember their
+kindness and often send a warm wish their way.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(1)
+What did Rashid plan to do after his arrival in Sydney?</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Go
+shopping</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Find
+a house</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Join
+his family</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Take
+his family</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(2)
+The girl’s parents got Rashid’s phone number from
+________.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">a
+friend of his family</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">a
+Sydney policeman</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">a
+letter in his papers</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">a
+stranger in Sydney</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(3)
+What does the underlined word “restored” in the last
+paragraph mean?</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Showed</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Sent
+out</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Delivered</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Gave
+back</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(4)
+Which of the following can be the best title for the text?</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">From
+India to Australia.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Living
+in a a New Country.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Turning
+Trash to Treasure.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">In
+Search of New Friends.</font></font></p></div>
+                        </div>
+                                    </td>
+            </tr>
+        </table>
+    
+    
+            
+    <!--开发者模式 答案直接接在问题下面-->
+    
+    
+    </div>                                                
+                                                                                                                                                                                                                                                <div class="wrapping-div " style="">
+                                    
+                        <table class="title_6">
+                            <tr>
+                    <td class="title_6_1">2.</td>
+                    <td  class="title_6_2">
+                                                <span class="title_strat">
+                                                            </span>
+                        <span class="title_6_span">GE2016NQGGKZT3J_1612_20210824_001</span>
+                    </td>
+                </tr>
+            
+            <tr>
+                <td class="title_6_1"></td>
+                <td class="title_6_wz">
+                    
+                                            <div class="comment-text-space editor_html_div editor_question_html pdf-text-size ">
+                            <div class="re_html_div no_border"><table><tr><td><p align="center" style="margin-bottom:0.37in;">
+</p></td><td></td></tr></table>
+
+<p align="center" style="line-height:125%;">
+<font face="等线, serif"><font face="Times New Roman, serif"><b>Music</b></font></font></p>
+
+<p align="justify" style="line-height:125%;">
+<font face="等线"><span lang="zh-cn"><font color="#ffffff"><b>卐卐</b></font></span></font><font face="等线, serif"><font face="Times New Roman, serif"><b>Opera
+at Music Hall: </b></font><font face="Times New Roman, serif">1243
+Elm Street. The season runs June through August, with additional
+performances in March and September. The Opera honors </font><font face="Times New Roman, serif"><i>Enjoy
+the Arts</i></font><font face="Times New Roman, serif"> membership
+discounts. Phone: 241-2742. </font><font face="Times New Roman, serif"><i>http://www.cityopera.com</i></font><font face="Times New Roman, serif">.</font></font></p>
+
+<p align="justify" style="line-height:125%;">
+<font face="等线"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font><font face="等线, serif"><font face="Times New Roman, serif"><b>Chamber
+Orchestra: </b></font><font face="Times New Roman, serif">The
+Orchestra plays at Memorial Hall at 1406 Elm Street, which offers
+several concerts from March through June. Call 723-1182 for more
+information. </font><font face="Times New Roman, serif"><i><u>http:</u></i></font><font face="Times New Roman, serif">
+</font><font face="Times New Roman, serif"><i><u>//www.chamberorch.com</u></i></font><font face="Times New Roman, serif">.</font></font></p>
+
+<p align="justify" style="line-height:125%;">
+<font face="等线"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font><font face="等线, serif"><font face="Times New Roman, serif"><b>Symphony
+Orchestra: </b></font><font face="Times New Roman, serif">At Music
+Hall and Riverbend. For ticket sales, call 381-3300. Regular season
+runs September through May at Music Hall in summer at Riverbend.
+</font><font face="Times New Roman, serif"><i>http://www.symphony.org/home.asp</i></font><font face="Times New Roman, serif">.</font></font></p>
+
+<p align="justify" style="line-height:125%;">
+<font face="等线"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font><font face="等线, serif"><font face="Times New Roman, serif"><b>College
+Conservatory of Music (CCM): </b></font><font face="Times New Roman, serif">Performances
+are on the main campus(</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">校园</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">)
+of the university, usually at Patricia Cobbett Theater. CCM organizes
+a variety of events, including performances by the well-known LaSalle
+Quartet, CCM’s Philharmonic Orchestra, and various groups of
+musicians presenting Baroque through modern music. Students with I.D.
+cards can attend the events for free. A free schedule of events for
+each term is available by calling the box office at 556-4183.
+</font><font face="Times New Roman, serif"><i>http://www.ccm.uc.edu/events/calendar</i></font><font face="Times New Roman, serif">.</font></font></p>
+
+<p align="justify" style="line-height:125%;">
+<font face="等线"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font><font face="等线, serif"><font face="Times New Roman, serif"><b>Riverbend
+Music Theater: </b></font><font face="Times New Roman, serif">6295
+Kellogg Ave. Large outdoor theater with the closest seats under cover
+(price difference). Big name shows all summer long! Phone: 232-6220.
+</font><font face="Times New Roman, serif"><i><u>http://www.riverbendmusic.com</u></i></font><font face="Times New Roman, serif">.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">(1)
+Which number should you call if you want to see an opera?</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">A</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">241-2742.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">B</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">723-1182.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">C</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">381-3300.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">D</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">232-6220.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">(2)
+When can you go to a concert by Chamber Orchestra?</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">A</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">February.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">B</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">May.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">C</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">August.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">D</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">November.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">(3)
+Where can students go for free performances with their I.D. cards?</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">A</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">Music
+Hall.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">B</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">Memorial
+Hall.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">C</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">Patricia
+Cobbett Theater.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">D</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">Riverbend
+Music Theater.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">(4)
+How is Riverbend Music Theater different from the other places?</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">A</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">It
+has seats in the open air.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">B</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">It
+gives shows all year round.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">C</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">It
+offers membership discounts.</font></font></p>
+
+<p align="justify" style="line-height:125%;"><font face="等线, serif"><font face="Times New Roman, serif">D</font></font><font face="等线"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font><font face="等线, serif"><font face="Times New Roman, serif">It
+presents famous musical works.</font></font></p></div>
+                        </div>
+                                    </td>
+            </tr>
+        </table>
+    
+    
+            
+    <!--开发者模式 答案直接接在问题下面-->
+    
+    
+    </div>                                                
+                                                                                                                                            <div class="wrapping-div " style="">
+                                    
+                        <table class="title_6">
+                            <tr>
+                    <td class="title_6_1">3.</td>
+                    <td  class="title_6_2">
+                                                <span class="title_strat">
+                                                            </span>
+                        <span class="title_6_span">GE2017NQGGKZT2J_1612_20210823_002</span>
+                    </td>
+                </tr>
+            
+            <tr>
+                <td class="title_6_1"></td>
+                <td class="title_6_wz">
+                    
+                                            <div class="comment-text-space editor_html_div editor_question_html pdf-text-size ">
+                            <div class="re_html_div no_border"><p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">I
+first met Paul Newman in 1968, when George Roy Hill, the director of
+Butch Cassidy and the Sundance Kid, introduced us in New York City.
+When the studio didn’t want me for the film</font><font face="Times New Roman, serif">-</font><font face="Times New Roman, serif">it
+wanted somebody as well known as Paul</font><font face="Times New Roman, serif">-</font><font face="Times New Roman, serif">he
+stood up for me. I don’t know how many people would have done
+that; they would have listened to their agents or the studio powers.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">The
+friendship that grew out of the experience of making that film and
+The Sting four years later had its root in the fact that although
+there was an age difference, we both came from a tradition of theater
+and live TV. We were respectful of craft (</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">技艺</font></span></font></font><font size="2"><font face="Times New Roman, serif">)
+and focused on digging into the characters we were going to play.
+Both of us had the qualities and virtues that are typical of American
+actors: humorous, aggressive, and making fun of each other</font><font face="Times New Roman, serif">-</font><font face="Times New Roman, serif">but
+always with an underlying affection. Those were also at the core (</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">核心</font></span></font></font><font size="2"><font face="Times New Roman, serif">)
+of our relationship off the screen.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">We
+shared the belief that if you’re fortunate enough to have
+success, you should put something back</font><font face="Times New Roman, serif">-</font><font face="Times New Roman, serif">he
+with his Newman’s Own food and his Hole in the Wall camps for
+kids who are seriously ill, and me with Sundance and the institute
+and the festival. Paul and I didn’t see each other all that
+regularly, but sharing </font><font face="Times New Roman, serif"><u>that</u></font><font face="Times New Roman, serif">
+brought us together. We supported each other financially and by
+showing up at events.</font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font face="Times New Roman, serif">I
+last saw him a few months ago. He’d been in and out of the
+hospital. He and I both knew what the deal was, and we didn’t
+talk about it. Ours was a relationship that didn’t need a lot
+of words.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(1)
+Why was the studio unwilling to give the role to the author at first?</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Paul
+Newman wanted it.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">The
+studio powers didn’t like his agent.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">He
+wasn’t famous enough.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">The
+director recommended someone else.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(2)
+Why did Paul and the author have a lasting friendship?</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+were of the same age.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+worked in the same theater.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+were both good actors.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+had similar characteristics.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(3)
+What does the underlined word “that” in paragraph 3 refer
+to?</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Their
+belief.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Their
+care for children.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Their
+success.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Their
+support for each other.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">(4)
+What is the author’s purpose in writing the test?</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+show his love of films.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+remember a friend.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+introduce a new movie.</font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+share his acting experience.</font></font></p></div>
+                        </div>
+                                    </td>
+            </tr>
+        </table>
+    
+    
+            
+    <!--开发者模式 答案直接接在问题下面-->
+    
+    
+    </div>                                                
+                                                                                                                                            <div class="wrapping-div " style="">
+                                    
+                        <table class="title_6">
+                            <tr>
+                    <td class="title_6_1">4.</td>
+                    <td  class="title_6_2">
+                                                <span class="title_strat">
+                                                            </span>
+                        <span class="title_6_span">GE2019NQGGKZT2J_1612_20210823_004</span>
+                    </td>
+                </tr>
+            
+            <tr>
+                <td class="title_6_1"></td>
+                <td class="title_6_wz">
+                    
+                                            <div class="comment-text-space editor_html_div editor_question_html pdf-text-size ">
+                            <div class="re_html_div no_border"><p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff"><b>卐卐</b></font></span></font></font><font size="2"><font color="#000000"><font face="Times New Roman, serif">Bacteria
+are an annoying problem for astronauts. The microorganisms (</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">微生物</font></span></font></font><font size="2"><font face="Times New Roman, serif">)
+from our bodies grow uncontrollably on surfaces of the International
+Space Station, so astronauts spend hours cleaning them up each week.
+How is NASA overcoming this very tiny big problem? It’s turning
+to a bunch of high school kids. But not just any kids. It depending
+on NASA HUNCH high school class, like the one science teachers Gene
+Gordon and Donna Himmelberg lead at Fairport High School in Fairport,
+New York.</font></font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font color="#000000"><font face="Times New Roman, serif">HUNCH
+is designed to connect high school classrooms with NASA engineers.
+For the past two years, Gordon’s students have been studying
+ways to kill bacteria in zero gravity, and they think they’re
+close to a solution (</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">解决方案</font></span></font></font><font size="2"><font face="Times New Roman, serif">).
+“We don’t give the students any breaks. They have to do
+it just like NASA engineers,” says Florence Gold, a project
+manager.</font></font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font><font color="#000000"><font face="汉仪书宋二简">“</font></font></span></font></font><font size="2"><font color="#000000"><font face="Times New Roman, serif">There
+are no tests,” Gordon says. “There is no graded homework.
+There almost are no grades, other than ‘Are you working towards
+your goal?’ Basically, it’s ‘I’ve got to
+produce this product and then, at the end of year, present it to
+NASA.’ Engineers come and really do an in-person review,
+and…it’s not a very nice thing at time. It’s a
+hard business review of your product.”</font></font></font></p>
+
+<p style="line-height:125%;"><font face="等线"><font size="2"><span lang="zh-cn"><font color="#ffffff">卐卐</font></span></font></font><font size="2"><font color="#000000"><font face="Times New Roman, serif">Gordon
+says the HUNCH program has an impact (</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">影响</font></span></font></font><font size="2"><font face="Times New Roman, serif">)
+on college admissions and practical life skills. “These kids
+are so absorbed in their studies that I just sit back. I don’t
+teach.” And that annoying bacteria? Gordon says his students
+are emailing daily with NASA engineers about the problem, readying a
+workable solution to test in space.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">(1)
+What do we know about the bacteria in the International Space
+Station?</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+are hard to get rid of.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+lead to air pollution.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+appear different forms.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">They
+damage the instruments.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">(2)
+What is the purpose of the HUNCH program?</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+strengthen teacher-student relationships.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+sharpen students’ communication skills.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+allow students to experience zero gravity.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">To
+link space technology with school education</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">(3)
+What do the NASA engineers do for the students in the program?</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Check
+their product.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Guide
+project designs</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Adjust
+work schedules.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Grade
+their homework.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">(4)
+What is the best title for the text?</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">A</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">NASA:
+The Home of Astronauts.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">B</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Space:
+The Final Homework Frontier.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">C</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">Nature:
+An Outdoor Classroom.</font></font></font></p>
+
+<p style="line-height:125%;"><font size="2"><font color="#000000"><font face="Times New Roman, serif">D</font></font><font face="等线"><font size="2"><span lang="zh-cn"><font face="汉仪书宋二简">．</font></span></font></font><font size="2"><font face="Times New Roman, serif">HUNCH:
+A College Admission Reform.</font></font></font></p></div>
+                        </div>
+                                    </td>
+            </tr>
+        </table>
+    
+    
+            
+    <!--开发者模式 答案直接接在问题下面-->
+    
+    
+    </div>                                                
+                                                                                                                                    </div>
+                                                                                                                                                <div class="wrapping-div">
+                                                                                                                                                <table class="title_3"><tr><td>完形填空<span class="title_span">3小题</span></td></tr></table>
+                                                                                                                                                                                        <div class="wrapping-div " style="">
+                                    
+                        <table class="title_6">
+                            <tr>
+                    <td class="title_6_1">5.</td>
+                    <td  class="title_6_2">
+                                                <span class="title_strat">
+                                                                                                                                            <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_09.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                            </span>
+                        <span class="title_6_span">GE10GEGYWXTK002_51434_20210730_ht2X3M2kWK</span>
+                    </td>
+                </tr>
+            
+            <tr>
+                <td class="title_6_1"></td>
+                <td class="title_6_wz">
+                    
+                                            <div class="comment-text-space editor_html_div editor_question_html pdf-text-size ">
+                            <div class="re_html_div no_border"><p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Leif
+Erickson reached North America around the year 1000, but the attempt
+to explore was started slowly. It would be five centuries ________(1)
+other Europeans landed on that continent.</span></span></p>
+
+<p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Why
+were Europeans the ones to ________(2) to the American? The Chinese
+and Arabs had the ________(3) and technology to sail across the seas.
+________(4) of them tool regular voyages in the Indian Ocean and the
+Asian Pacific for trade. But exploration? By the mid-15th century
+China had followed the closed-door policy to ________(5) itself from
+the rest of the world. The Arabs, with access to the minerals and
+spices (</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">香料</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">)
+of Africa and the Far East, saw no ________(6) to journey into the
+unknown.</span></span></p>
+
+<p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Europe
+________(7) needed gold and silver; its mines could not meet the
+demand for coinage. Ottoman Turks blocked the routes across the land
+to Asia. Only the sea held the ________(8) of new wealth.</span></span></p>
+
+<p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">With
+the return of Magellan’s ships in 1522 from its voyage around
+the world the belief was ________(9) that the oceans were
+interconnected, promising the age of discovery. The English, as well
+as the Spanish, Portuguese and French, ________(10) themselves to
+finding the “river of the west” through North America to
+the east.</span></span></p>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(1)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">after</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">since</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">before</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">when</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(2)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">push</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">pull</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">draw</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">drive</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(3)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">sources</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">resources</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">substances</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">matters</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(4)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Neither</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Both</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Any</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">None</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(5)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">prevent</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">protect</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">isolate</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">differ</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(6)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">access</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">admission</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">application</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">association</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(7)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">as
+a matter of fact</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">in
+other words</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">for
+one thing</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">on
+the other hand</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(8)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">symbol</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">impression</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">promise</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">reflection</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(9)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">extended</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">estimated</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">attracted</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">accepted</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(10)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">contributed</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">devoted</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">referred</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">connected</span></span></p></td></tr></tbody></table></div>
+                        </div>
+                                    </td>
+            </tr>
+        </table>
+    
+    
+            
+    <!--开发者模式 答案直接接在问题下面-->
+    
+    
+    </div>                                                
+                                                                                                                                            <div class="wrapping-div " style="">
+                                    
+                        <table class="title_6">
+                            <tr>
+                    <td class="title_6_1">6.</td>
+                    <td  class="title_6_2">
+                                                <span class="title_strat">
+                                                                                                                                            <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_09.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                            </span>
+                        <span class="title_6_span">GE10GEGYWXTK030_51434_20210730_Dh63wBjIWD</span>
+                    </td>
+                </tr>
+            
+            <tr>
+                <td class="title_6_1"></td>
+                <td class="title_6_wz">
+                    
+                                            <div class="comment-text-space editor_html_div editor_question_html pdf-text-size ">
+                            <div class="re_html_div no_border"><p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">It
+is often claimed that nuclear energy is something we cannot do
+without. We live in a ________(1) society where there is an enormous
+demand for commercial products of all kinds. Moreover,an increase in
+industrial production is considered to be one solution to the problem
+of mass unemployment. Such an increase presumes an abundant and cheap
+energy supply. Many people believe that nuclear energy provides an
+inexhaustible and ________(2) source of power and that it is
+therefore essential for an industrially developing society. There are
+a number of other advantages in the use of nuclear energy. Firstly,
+nuclear power, except for accidents, is clean. A further advantage is
+that a nuclear power station can be run and maintained by relatively
+few technical and administrative staff. The nuclear reactor
+represents an enormous ________(3) in our scientific evolution and,
+whatever the anti nuclear group says, it is wrong to ________(4) a
+return to more primitive sources of fuel. However, opponents of
+nuclear energy point out that nuclear power stations bring a direct
+threat not only to the environment but also to civil rights.</span></span></p>
+
+<p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Furthermore,
+it is questionable whether ultimately nuclear power is a(n)
+________(5) source of
+energy. There have, for example, been very costly accidents in
+America, in Russian and, of course, in Japan. The possibility of
+increases in the cost of uranium in addition to the cost of greater
+safety ________(6) could demand too much money for nuclear power. In
+the long run, environmentalists argue, nuclear energy wastes valuable
+resources and disturbs the ecology to an extent which could
+________(7) _ the destruction of the human race. Thus, if we wish to
+survive, we cannot afford nuclear energy. In spite of the case
+against nuclear energy outlined above, nuclear energy programs are
+________(8), which assumes a continual growth in industrial
+production and consumer demands. ________(9), it is doubtful whether
+this growth will or can continue. Having considered the arguments on
+both sides carefully, it seems there are good economic and ecological
+reasons for sources of energy ________(10) nuclear power.</span></span></p>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(1)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">material</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">transforming</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">consumer</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">modern</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(2)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">economical</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">commercial</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">clean</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">financial</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(3)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">increase</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">step</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">change</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">demand</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(4)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">estimate</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">identity</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">reject</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">expect</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(5)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">cheap</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">sufficient</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">legal</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">economic</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(6)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">possessions</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">supplies</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">expenses</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">investments</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(7)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">bring
+up</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">bring
+about</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">bring
+to</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">bring
+in</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(8)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">suffering</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">surviving</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">forming</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">expanding</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(9)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">However</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">For
+example</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Therefore</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Besides</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr class="firstRow"><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(10)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">other
+than</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">more
+than</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">rather
+than</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">less
+than</span></span></p></td></tr></tbody></table></div>
+                        </div>
+                                    </td>
+            </tr>
+        </table>
+    
+    
+            
+    <!--开发者模式 答案直接接在问题下面-->
+    
+    
+    </div>                                                
+                                                                                                                                            <div class="wrapping-div " style="">
+                                    
+                        <table class="title_6">
+                            <tr>
+                    <td class="title_6_1">7.</td>
+                    <td  class="title_6_2">
+                                                <span class="title_strat">
+                                                                                                                                            <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_09.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                                                <img style="width: 26px !important;vertical-align:middle;" width="26" src="https://assets.xqf.cn/style/img/pdf/z_11.png">
+                                        
+                                                                                                                            </span>
+                        <span class="title_6_span">GE10GEGYWXTK143_51434_20210730_tFcfNcPgIx</span>
+                    </td>
+                </tr>
+            
+            <tr>
+                <td class="title_6_1"></td>
+                <td class="title_6_wz">
+                    
+                                            <div class="comment-text-space editor_html_div editor_question_html pdf-text-size ">
+                            <div class="re_html_div no_border"><p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Being
+alone in outer space can be frightening-That is one reason why
+astronauts on solo(</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">单独的</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">)
+space flight were given plenty of work to keep them ________(1). They
+were also inconstant communication with people on the earth
+________(2) being with people from whom you cannot get away might be
+even harder than being alone. This is what happens on long submarine
+voyages. It will also happen on ________(3) space fights in the
+future. Will there be special problems of adjustment under such
+conditions?</span></span></p>
+
+<p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Scientists
+have studied the reactions of men to one another during long
+submarine voyages. They have found that the longer the voyage lasts,
+the more serious the problem of ________(4) is. When men are
+________(5) together for a long period, they begin to feel uneasy.
+Everyone has little habits of speaking and behaving that are
+ordinarily acceptable. In the limited space over a long period of
+time, however, these little habits may become very ________(6).</span></span></p>
+
+<p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Apparently,
+although no one wants to be ________(7) all the time, everyone needs
+some degree of privacy. When people are enclosed together, they are
+in what is called a stress situation. That means that they are under
+an unusual amount of ________(8) or stress.</span></span></p>
+
+<p style="text-align:justify;text-indent:0.29in;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">People
+who are well-adjusted are able to ________(9) stress situations
+better than others. That is one reason why so much care is taken in
+________(10) our astronauts. These men undergo a long period of
+testing and training. One of the things tested is their behavior
+under stress.</span></span></p>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(1)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">tired</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">asleep</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">conscious</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">busy</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(2)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">So
+far</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">After
+all</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">However</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">Therefore</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(3)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">long</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">fast</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">dangerous</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">direct</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(4)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">fuel</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">entertainment</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">adjustment</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">health</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(5)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">shut
+up</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">held
+up</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">brought
+up</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">picked
+up</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(6)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">pleasing</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">annoying</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">common</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">valuable</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(7)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">noisy</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">alone</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">personal</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">sociable</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(8)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">emphasis</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">conflict</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">power</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">pressure</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(9)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">handle</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">create</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">affect</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">investigate</span></span></p></td></tr></tbody></table>
+
+<table><tbody><tr><td><p style="text-align:justify;line-height:125%;"><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">(10)
+A</span></span><span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">becoming</span></span></p></td><td><p>B<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">choosing</span></span></p></td><td><p>C<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">ordering</span></span></p></td><td><p>D<span style="font-family:'宋体';"><span style="font-family:'汉仪书宋二简';">．</span></span><span style="font-family:'Time New Romans', serif;"><span style="font-family:'Times New Roman', serif;">promoting</span></span></p></td></tr></tbody></table></div>
+                        </div>
+                                    </td>
+            </tr>
+        </table>
+    
+    
+            
+    <!--开发者模式 答案直接接在问题下面-->
+    
+    
+    </div>                                                
+                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                            </div>
+                </div>
+</body>
+
+</html>
