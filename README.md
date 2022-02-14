@@ -1,6 +1,5 @@
 # XQFTools
 
------
 
 ![](https://img.shields.io/badge/python-3.6%2B-brightgreen)
 
@@ -16,7 +15,6 @@ XQF办公自动化小工具,提供如下功能:
 
 ## 使用准备
 
------
 
 可以直接使用.exe文件,或者使用Python运行
 
@@ -41,7 +39,6 @@ pip install -r requriements.txt
 
 ## 1、组卷文件修改
 
------
 > PaperExport/
 
 ### 功能
@@ -54,7 +51,6 @@ pip install -r requriements.txt
 
 ## 2、Word导入重命名
 
------
 > NumberRename/
 > SplitQuestion/
 
@@ -68,7 +64,6 @@ pip install -r requriements.txt
 
 ## 3、排课表格导入
 
------
 > Paike/
 
 ### 功能
@@ -85,7 +80,6 @@ pip install -r requriements.txt
 
 ## 4、Word批量删除图文框
 
------
 > DelFrame/
 
 ### 功能
@@ -97,7 +91,6 @@ pip install -r requriements.txt
 
 ## 5、Excel目录文件按区县排序
 
------
 > SortCatalog/
 
 ### 功能
