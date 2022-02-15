@@ -51,7 +51,10 @@ class SortCatalog:
             if i in s:
                 match_list.append(i)
                 match_idx.append(s.find(i))
-        return match_list[match_idx.index(min(match_idx))]
+        if match_idx:
+            return match_list[match_idx.index(min(match_idx))]
+        else:
+            return 0
 
     def reorder(self, excel):
         df = pd.read_excel(excel)
@@ -65,11 +68,15 @@ class SortCatalog:
                 index_list.append(i)
             except:
                 continue
+        missing = df[df['区'] == 0].index.tolist()
+        if missing:
+            index_list.extend(missing)
         sorted_list = sorted(index_list)
         for i in range(len(index_list)):
             j = sorted_list.index(index_list[i])
             start = sorted_list[j]
             end = sorted_list[j + 1] if j + 1 < len(sorted_list) else max_row
+            df.loc[sorted_list[j], '章'] = str(i + 1) + "、" + df.loc[sorted_list[j], '章']
             new_df = pd.concat([new_df, df.iloc[start:end, :]])
         del new_df['区']
         new_df.to_excel('res-' + excel, index=False)
@@ -82,8 +89,8 @@ class SortCatalog:
                 self.reorder(file)
         except Exception as e:
             print(e)
-            print("运行出错：请核对当前目录下的Excel，并确保Excel可编辑"
-                  "解决方法：进入Excel双击任一单元格并保存")
+            print("运行出错：请核对当前目录下的Excel，并确保Excel可编辑")
+            print("可尝试方法：进入Excel双击任一单元格并保存")
 
 
 def main():
