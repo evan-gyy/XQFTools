@@ -76,7 +76,6 @@ class SortCatalog:
             return match_list[match_idx.index(min(match_idx))]
         else:
             return 0
-<<<<<<< HEAD
 
     def add_order(self, s, i):
         res = s
@@ -95,8 +94,6 @@ class SortCatalog:
             except:
                 pass
         return str(i) + '、' + res
-=======
->>>>>>> 79ff0db5dc2c6a8fe15c38e1a7a0b47049797d9d
 
     def reorder(self, excel):
         df = pd.read_excel(excel)
@@ -118,11 +115,8 @@ class SortCatalog:
             j = sorted_list.index(index_list[i])
             start = sorted_list[j]
             end = sorted_list[j + 1] if j + 1 < len(sorted_list) else max_row
-<<<<<<< HEAD
             df.loc[sorted_list[j], '章'] = self.add_order(df.loc[sorted_list[j], '章'], i + 1)
-=======
             df.loc[sorted_list[j], '章'] = str(i + 1) + "、" + df.loc[sorted_list[j], '章']
->>>>>>> 79ff0db5dc2c6a8fe15c38e1a7a0b47049797d9d
             new_df = pd.concat([new_df, df.iloc[start:end, :]])
         del new_df['区']
         new_df.to_excel('res-' + os.path.basename(excel), index=False)
