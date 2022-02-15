@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 # @Author: gyy
 import pandas as pd
+import win32gui
+import pyautogui
+import win32con
+import time
 import os
 
 class SortCatalog:
@@ -30,7 +34,7 @@ class SortCatalog:
         for root, dirs, files in os.walk("."):
             for f in files:
                 if type in f and 'res' not in f:
-                    file_list.append(f)
+                    file_list.append(os.path.abspath(f))
         if multiple:
             return file_list
         else:
@@ -44,6 +48,23 @@ class SortCatalog:
                 except:
                     print("发生错误：请正确输入文件前的序号（0-n）")
 
+    def enter_edit_mode(self, excel):
+        # 获得excel临时文件的句柄
+        import win32com.client as win32
+        xl_app = win32.Dispatch("Excel.Application")
+        xl_app.Visible = True
+        xl_app.Workbooks.Open(excel)
+        time.sleep(1)
+        screenWidth, screenHeight = pyautogui.size()
+        pyautogui.moveTo(screenWidth / 2, screenHeight / 2)
+        pyautogui.doubleClick()
+        pyautogui.moveRel(10, 10, duration=0.1)
+        pyautogui.doubleClick()
+        time.sleep(1)
+        pyautogui.hotkey('ctrl', 'w')
+        pyautogui.press('enter')
+        xl_app.Quit()
+
     def match_first(self, s):
         match_list = []
         match_idx = []
@@ -51,7 +72,28 @@ class SortCatalog:
             if i in s:
                 match_list.append(i)
                 match_idx.append(s.find(i))
-        return match_list[match_idx.index(min(match_idx))]
+        if match_idx:
+            return match_list[match_idx.index(min(match_idx))]
+        else:
+            return 0
+
+    def add_order(self, s, i):
+        res = s
+        if '、' in res:
+            try:
+                temp = res.split('、')
+                first = int(temp[0])
+                res = '、'.join(temp[1:])
+            except:
+                pass
+        elif ' ' in res:
+            try:
+                temp = res.split(' ')
+                first = int(temp[0])
+                res = ' '.join(temp[1:])
+            except:
+                pass
+        return str(i) + '、' + res
 
     def reorder(self, excel):
         df = pd.read_excel(excel)
@@ -65,25 +107,32 @@ class SortCatalog:
                 index_list.append(i)
             except:
                 continue
+        missing = df[df['区'] == 0].index.tolist()
+        if missing:
+            index_list.extend(missing)
         sorted_list = sorted(index_list)
         for i in range(len(index_list)):
             j = sorted_list.index(index_list[i])
             start = sorted_list[j]
             end = sorted_list[j + 1] if j + 1 < len(sorted_list) else max_row
+            df.loc[sorted_list[j], '章'] = self.add_order(df.loc[sorted_list[j], '章'], i + 1)
             new_df = pd.concat([new_df, df.iloc[start:end, :]])
         del new_df['区']
-        new_df.to_excel('res-' + excel, index=False)
+        new_df.to_excel('res-' + os.path.basename(excel), index=False)
 
     def run(self):
         try:
             file_list = self.find_file('.xlsx')
+            file_list = list(set(file_list))
+            # for file in file_list:
+            #     self.enter_edit_mode(file)
             for file in file_list:
-                print('processing: {}'.format(file))
+                print('processing: {}'.format(os.path.basename(file)))
                 self.reorder(file)
         except Exception as e:
             print(e)
-            print("运行出错：请核对当前目录下的Excel，并确保Excel可编辑"
-                  "解决方法：进入Excel双击任一单元格并保存")
+            print("运行出错：请核对当前目录下的Excel，并确保Excel可编辑")
+            print("可尝试方法：进入Excel双击任一单元格并保存")
 
 
 def main():

@@ -11,11 +11,8 @@ from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
 from pptx import Presentation
 from pptx.util import Cm, Pt
-from pptx.enum.text import MSO_AUTO_SIZE
 from pptx.dml.color import RGBColor
-import urwid
 import copy
-import six
 import os
 
 
