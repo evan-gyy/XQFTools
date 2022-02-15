@@ -23,7 +23,7 @@ def main():
             for fra in doc.Content.Frames:
                 fra.Delete()
             doc.Save()
-            print('done.')
+            print('done: {}'.format(f))
     except Exception as e:
         print(e)
     app.Quit()
