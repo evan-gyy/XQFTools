@@ -113,6 +113,7 @@ class PaperExport:
                 doc.paragraphs[0].runs[0].clear()
         except:
             pass
+        # 边距、装订线
         for section in doc.sections:
             section.top_margin = Cm(2.54)
             section.bottom_margin = Cm(2.54)
