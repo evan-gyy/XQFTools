@@ -11,6 +11,7 @@ from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, Inches
+import traceback
 import os
 
 
@@ -30,23 +31,35 @@ class Preprocess:
         app = win32com.client.DispatchEx('Word.Application')
         app.Visible = 0
         app.DisplayAlerts = 0
-        for file in self.file_list:
-            doc = app.Documents.Open(file)
-            # 删除图文框
-            for fra in doc.Content.Frames:
-                fra.Delete()
-            # 替换文本
-            # old = ['A、', 'B、', 'C、', 'D、', '^b', '^m', '^n']
-            # new = ['A．', 'B．', 'C．', 'D．', '', '', '']
-            old = ['A、', 'B、', 'C、', 'D、']
-            new = ['A．', 'B．', 'C．', 'D．']
-            for i in range(len(old)):
-                app.Selection.Find.ClearFormatting()
-                app.Selection.Find.Replacement.ClearFormatting()
-                app.Selection.Find.Execute(old[i], False, False, False, False, False, True, 1, False, new[i], 2)
+        try:
+            for file in self.file_list:
+                doc = app.Documents.Open(file)
+                print('deleting frame: {}'.format(os.path.basename(file)))
+                # 删除图文框
+                for fra in doc.Content.Frames:
+                    fra.Delete()
+                # 文本框转文本
+                for i in range(doc.Shapes.Count - 1, -1, -1):
+                    print('\r- {} shapes left'.format(i), end='', flush=True)
+                    shp = doc.Shapes[i]
+                    if shp.Type == 17:
+                        string = shp.TextFrame.TextRange.Text[:shp.TextFrame.TextRange.Characters.Count - 1]
+                        if len(string) > 0:
+                            rng = shp.Anchor.Paragraphs[0].Range
+                            rng.InsertBefore(string)
+                        shp.Delete()
+                print()
+                # 替换文本
+                old = ['A、', 'B、', 'C、', 'D、', '^b', '^m', '^n']
+                new = ['A．', 'B．', 'C．', 'D．', '', '', '']
+                for i in range(len(old)):
+                    app.Selection.Find.ClearFormatting()
+                    app.Selection.Find.Replacement.ClearFormatting()
+                    app.Selection.Find.Execute(old[i], False, False, False, False, False, True, 1, False, new[i], 2)
 
-            doc.Save()
-            print('deleting frame: {}'.format(os.path.basename(file)))
+                doc.Save()
+        except:
+            traceback.print_exc()
         app.Quit()
 
     def set_font(self, run, font_name):
@@ -55,6 +68,10 @@ class Preprocess:
 
     def set_para_format(self, para):
         pf = para.paragraph_format
+        pf.line_spacing = 1.25
+        para.style.font.size = Pt(10.5)
+        pf.left_indent = para.style.font.size * 2
+        pf.right_indent = Inches(0)
         tabs = [2, 10, 18, 26]
         try:
             # print(pf.tab_stops[0].position.inches)
