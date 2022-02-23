@@ -191,6 +191,19 @@ class SplitQuestion:
             order_list = [i + 1 for i in range(len(titles))]
             mode_list = [default_mode for j in range(len(titles))]
             self.generate_mode_file(order_list, mode_list)
+            for t in range(len(titles)):
+                try:
+                    match = difflib.get_close_matches(titles[t], self.word_list, 1, cutoff=0.7)[0]
+                except:
+                    match = 0
+                if match:
+                    os.rename(path + match, path + f"{t + 1}-{default_mode}.docx")
+                else:
+                    for f in self.word_list:
+                        if f.split('-')[0] == str(t + 1):
+                            os.rename(path + f, path + f"{t + 1}-{default_mode}.docx")
+            self.word_list = self.find_file('.docx', self.path, multiple=True)
+            self.word_list.sort(key=lambda x: int(x.split('-')[0]))
             input('请核对编号-模式文件')
 
         rename_file = ""
