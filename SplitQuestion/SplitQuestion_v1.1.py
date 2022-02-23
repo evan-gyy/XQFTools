@@ -4,6 +4,7 @@
 import os
 import pandas as pd
 import difflib
+import traceback
 
 class NumberRename:
     """
@@ -143,9 +144,9 @@ class SplitQuestion:
         for i in range(0, len(cat_df)):
             if isinstance(cat_df.iloc[i]['章'], str):
                 count += 1
-                cat_df.loc[i, '章'] = str(count) + "、" + cat_df.loc[i, '章']
                 ques_num_dict[count] = []
                 titles.append(cat_df.iloc[i]['章'])
+                cat_df.loc[i, '章'] = str(count) + "、" + cat_df.loc[i, '章']
             num = cat_df.iloc[i]['习题编号']
             if isinstance(num, str):
                 ques_num_dict[count].append(num)
@@ -193,7 +194,7 @@ class SplitQuestion:
             self.generate_mode_file(order_list, mode_list)
             for t in range(len(titles)):
                 try:
-                    match = difflib.get_close_matches(titles[t], self.word_list, 1, cutoff=0.7)[0]
+                    match = difflib.get_close_matches(titles[t], self.word_list, 1, cutoff=0.6)[0]
                 except:
                     match = 0
                 if match:
@@ -202,7 +203,7 @@ class SplitQuestion:
                     for f in self.word_list:
                         if f.split('-')[0] == str(t + 1):
                             os.rename(path + f, path + f"{t + 1}-{default_mode}.docx")
-            self.word_list = self.find_file('.docx', self.path, multiple=True)
+            self.word_list = self.find_file('.doc', self.path, multiple=True)
             self.word_list.sort(key=lambda x: int(x.split('-')[0]))
             input('请核对编号-模式文件')
 
@@ -217,7 +218,7 @@ class SplitQuestion:
             raise ValueError("编号-模式数量与文件实际数量不符，请核对")
         for t in range(len(titles)):
             try:
-                match = difflib.get_close_matches(titles[t], self.word_list, 1, cutoff=0.7)[0]
+                match = difflib.get_close_matches(titles[t], self.word_list, 1, cutoff=0.6)[0]
             except:
                 match = 0
             if match:
@@ -285,8 +286,8 @@ def main():
         sq = SplitQuestion(path=path)
         sq.run()
         input('运行完成')
-    except Exception as e:
-        print(e)
+    except:
+        traceback.print_exc()
         input('运行出错，请检查错误')
 
 main()
