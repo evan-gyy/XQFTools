@@ -17,6 +17,7 @@ import os
 
 
 class PaperExport:
+    """ Word、PPT导出修改程序 """
     def __init__(self):
         self.TYPE = {
             "1": ".docx",
@@ -213,18 +214,30 @@ class PaperExport:
         while '' in text_list:
             text_list.remove('')
         width = 22 * 72 // 16
+        small_width = 14 * 72 // 16
 
         from textwrap import wrap
-        wrap_list = []
-        for i in text_list:
-            wrap_text = wrap(i, width)
-            for t in wrap_text:
-                line_w = get_line_width(t)
-                if line_w > width:
-                    cut = cut_chn_line(t, width - 20)
-                    wrap_list.extend(cut)
-                else:
-                    wrap_list.append(t)
+        def wrap_text(text_list, width):
+            wrap_list = []
+            for i in text_list:
+                wrap_text = wrap(i, width)
+                for t in wrap_text:
+                    line_w = get_line_width(t)
+                    if line_w > width:
+                        cut = cut_chn_line(t, width - 20)
+                        wrap_list.extend(cut)
+                    else:
+                        wrap_list.append(t)
+            return wrap_list
+
+        wrap_list = wrap_text(text_list, width)
+
+        listen = False
+        big_font = False
+        if len(wrap_list) <= size * 0.5:
+            listen = True
+            big_font = True
+            wrap_list = wrap_text(text_list, small_width)
 
         res_list = []
         paras = len(wrap_list) // size
@@ -236,7 +249,7 @@ class PaperExport:
         else:
             res_list.append(wrap_list)
 
-        return res_list
+        return res_list, listen, big_font
 
     def change_ppt_title(self, prs, slide):
         number = prs.slides[slide].shapes[0]
@@ -250,7 +263,7 @@ class PaperExport:
 
     def change_ppt_content(self, prs, slide, text, listen=False, big_font=False):
         current_slide = slide
-        text_list = self.cut_text(text)
+        text_list, listen, big_font = self.cut_text(text)
         for i in range(len(text_list)):
             # 复制幻灯片
             if i > 0:
