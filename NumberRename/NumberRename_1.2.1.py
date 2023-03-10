@@ -18,7 +18,6 @@ class RenameNumber:
                         'pdf资源编号-学生', '空行数', 'pdf资源编号-老师', '讲义标题', 'pdf资源编号-出版', '目录ID', '生效时间', '关联习题集ID', '目录模式',
                         '视频数量(仅查看非导入属性)', '是否有效(仅查看非导入属性)', '英语文章ID(仅查看非导入属性)', 'word导入数量(仅查看非导入属性)', '年份(仅查看非导入属性)',
                         '来源(仅查看非导入属性)', '习题知识点编号(仅查看非导入属性)']
-        self.output_file = "目录生成.xlsx"
 
     def find_file(self, type):
         file_list = []
@@ -171,7 +170,7 @@ class RenameNumber:
                 for _ in range(7, 10):
                     ws.cell(temp_row, _).value = i + 1
                 temp_row += 1
-        wb.save(self.output_file)
+        wb.save("目录.xlsx")
         # Workbook 2
         wb = openpyxl.Workbook()
         ws = wb.active
@@ -183,7 +182,7 @@ class RenameNumber:
                 ws.cell(temp_row, 1).value = v['final_list'][i]
                 ws.cell(temp_row, 2).value = v['short_list'][i]
                 temp_row += 1
-        wb.save(self.output_file)
+        wb.save("重命名表格.xlsx")
         del wb, ws
         gc.collect()
 
