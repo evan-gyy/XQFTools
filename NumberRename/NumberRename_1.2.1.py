@@ -170,6 +170,7 @@ class RenameNumber:
                 for _ in range(7, 10):
                     ws.cell(temp_row, _).value = i + 1
                 temp_row += 1
+        self.format_worksheet(ws)
         wb.save("目录.xlsx")
         # Workbook 2
         wb = openpyxl.Workbook()
@@ -182,9 +183,23 @@ class RenameNumber:
                 ws.cell(temp_row, 1).value = v['final_list'][i]
                 ws.cell(temp_row, 2).value = v['short_list'][i]
                 temp_row += 1
+        self.format_worksheet(ws)
         wb.save("重命名表格.xlsx")
         del wb, ws
         gc.collect()
+
+    def format_worksheet(self, ws):
+        for col in ws.columns:
+            max_length = 0
+            column = col[0].column_letter  # Get the column name
+            for cell in col:
+                try:  # Necessary to avoid error on empty cells
+                    if len(str(cell.value)) > max_length:
+                        max_length = len(str(cell.value))
+                except:
+                    pass
+            adjusted_width = (max_length + 2) * 1.2
+            ws.column_dimensions[column].width = adjusted_width
 
     def run_mode(self, mode, ql, al, rl):
         """ direct run with specific mode """
